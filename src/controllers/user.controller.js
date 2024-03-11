@@ -4,7 +4,7 @@ class UserController {
 
     async login(req, res, next) {
         try {
-            const { userId, email } = req.session.user;
+            const { userId, email } = req.user;
             const { method } = req.query;
             if (!userId || !email) {
                 return res.status(400).send({ message: 'Email and UserId are required' });
@@ -24,7 +24,7 @@ class UserController {
     }
     async checkUserExisting(req, res, next) {
         try {
-            const { userId } = req.session.user;
+            const { userId } = req.user;
             const result = await UserModel.findOne({ userId });
             if (!result) {
                 return res.status(400).send({ message: 'User not found' });

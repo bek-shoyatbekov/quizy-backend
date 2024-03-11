@@ -5,7 +5,7 @@ class QuizResultController {
     async add(req, res, next) {
         try {
             const { quiz: { quizId, score } } = req.body;
-            const { userId } = req.session.user;
+            const { userId } = req.user;
             if (!quizId) {
                 return res.status(400).send({ message: 'QuizId are required' });
             }
@@ -40,7 +40,7 @@ class QuizResultController {
 
     async getByUserId(req, res, next) {
         try {
-            const { userId } = req.session.user;
+            const { userId } = req.user;
 
             const results = await QuizResultModel.find({ userId });
             res.status(200).send({ message: 'Get all quizes', data: results });

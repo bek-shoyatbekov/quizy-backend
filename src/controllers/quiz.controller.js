@@ -6,7 +6,7 @@ class QuizController {
     async add(req, res, next) {
         try {
             let { quiz } = req.body;
-            const { userId } = req.session.user;
+            const { userId } = req.user;
             if (!quiz) {
                 return res.status(400).send({ message: 'Quiz is required' });
             }

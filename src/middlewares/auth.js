@@ -12,7 +12,7 @@ const authMiddleware = async (req, res, next) => {
             email: decoded.email
         };
 
-        req.session.user = user;
+        req.user = user;
         next();
     } catch (err) {
         return res.status(401).json({ error: 'Unauthorized' });
