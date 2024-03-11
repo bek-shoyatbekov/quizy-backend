@@ -2,4 +2,4 @@ node_modules/
 
 .env
 
-firebase-firebasbase.json
+firebase-credentials.json
