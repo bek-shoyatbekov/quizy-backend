@@ -6,7 +6,6 @@ class UserController {
         try {
             const { userId, email } = req.session.user;
             const { method } = req.query;
-            console.log("Login ", userId, email);
             if (!userId || !email) {
                 return res.status(400).send({ message: 'Email and UserId are required' });
             }
@@ -17,7 +16,6 @@ class UserController {
             }
 
             const result = await UserModel.create({ userId, email });
-            console.log("Login result ", result);
             res.status(200).send({ message: 'Login successful' });
             return;
         } catch (err) {

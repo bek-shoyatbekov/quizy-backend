@@ -6,7 +6,6 @@ class QuizResultController {
         try {
             const { quiz: { quizId, score } } = req.body;
             const { userId } = req.session.user;
-            console.log("New quiz result ", quizId, score);
             if (!quizId) {
                 return res.status(400).send({ message: 'QuizId are required' });
             }
@@ -17,7 +16,6 @@ class QuizResultController {
             }
             const result = await QuizResultModel.create(newQuizResult);
 
-            console.log("Quiz result saved ", result);
             res.status(200).send({ message: 'Quiz added successful' });
             return;
         } catch (err) {
